@@ -9,8 +9,14 @@ const io = new Server(server, {
   cors: { origin: "*" }
 });
 
+// المسار الرئيسي للسيرفر
 app.get('/', (req, res) => {
   res.send('Mova Socket Server is Running on Render!');
+});
+
+// ⚡ المسار الجديد المخصص لإبقاء السيرفر مستيقظاً (Ping)
+app.get('/ping', (req, res) => {
+  res.status(200).send('Awake');
 });
 
 io.on('connection', (socket) => {
